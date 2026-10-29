@@ -358,7 +358,8 @@ public final class FeatureFlagHandler {
 				prefs.edit().putBoolean(
 								context.getString(R.string.pref_behaviour_video_loop_key),
 								true)
-      }
+					.apply();
+      		}
       
 			if(getAndSetFeatureFlag(prefs, FeatureFlag.POST_SUBTITLE_LOCKED_TAG)
 					== FeatureFlagStatus.UPGRADE_NEEDED) {
