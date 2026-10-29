@@ -355,12 +355,15 @@ public final class FeatureFlagHandler {
 			if(getAndSetFeatureFlag(prefs, FeatureFlag.DEFAULT_PREF_VIDEO_AUTOPLAY)
 					== FeatureFlagStatus.UPGRADE_NEEDED) {
 
-				prefs.edit().putBoolean(
+				Log.i(TAG, "Upgrading, autoplay videos by default.");
+
+				prefs.edit()
+						.putBoolean(
 								context.getString(R.string.pref_behaviour_video_autoplay_key),
 								true)
-          .apply();
-      }
-      
+          				.apply();
+      		}
+
 			if(getAndSetFeatureFlag(prefs, FeatureFlag.POST_SUBTITLE_LOCKED_TAG)
 					== FeatureFlagStatus.UPGRADE_NEEDED) {
 
