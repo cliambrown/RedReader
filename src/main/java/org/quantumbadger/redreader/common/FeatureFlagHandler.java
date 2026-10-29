@@ -61,6 +61,7 @@ public final class FeatureFlagHandler {
 		CROSSPOST_ORIGIN_MENU_ITEM("crosspostOriginMenuItem"),
 		MAIN_MENU_RANDOM_REMOVED("mainMenuRandomRemoved"),
 		DEFAULT_PREF_VIDEO_AUTOPLAY("defaultPrefVideoAutoplay");
+		POST_SUBTITLE_LOCKED_TAG("postSubtitleLockedTag");
 
 		@NonNull private final String id;
 
@@ -357,6 +358,27 @@ public final class FeatureFlagHandler {
 				prefs.edit().putBoolean(
 								context.getString(R.string.pref_behaviour_video_autoplay_key),
 								true)
+          .apply();
+      }
+      
+			if(getAndSetFeatureFlag(prefs, FeatureFlag.POST_SUBTITLE_LOCKED_TAG)
+					== FeatureFlagStatus.UPGRADE_NEEDED) {
+
+				Log.i(TAG, "Upgrading, show locked tag in post subtitle by default.");
+
+				final Set<String> existingPostSubtitleItems = getStringSet(
+						R.string.pref_appearance_post_subtitle_items_key,
+						R.array.pref_appearance_post_subtitle_items_default,
+						context,
+						prefs);
+
+				existingPostSubtitleItems.add("locked");
+
+				prefs.edit()
+						.putStringSet(
+								context.getString(
+										R.string.pref_appearance_post_subtitle_items_key),
+								existingPostSubtitleItems)
 						.apply();
 			}
 		});
