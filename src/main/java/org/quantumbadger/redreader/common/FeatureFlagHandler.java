@@ -60,7 +60,7 @@ public final class FeatureFlagHandler {
 		DEFAULT_PREF_CUSTOM_TABS("defaultPrefCustomTabs"),
 		CROSSPOST_ORIGIN_MENU_ITEM("crosspostOriginMenuItem"),
 		MAIN_MENU_RANDOM_REMOVED("mainMenuRandomRemoved"),
-		DEFAULT_PREF_VIDEO_LOOP("defaultPrefVideoLoop");
+		DEFAULT_PREF_VIDEO_LOOP("defaultPrefVideoLoop"),
 		POST_SUBTITLE_LOCKED_TAG("postSubtitleLockedTag");
 
 		@NonNull private final String id;
